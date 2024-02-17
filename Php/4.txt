@@ -1,0 +1,21 @@
+<?php
+
+$num1 = 10;
+$num2 = 22;
+$num3 = 5;
+
+// Check first two numbers and store the larger one
+if ($num1 > $num2) {
+  $largest = $num1;
+} else {
+  $largest = $num2;
+}
+
+// Compare the larger number with the third number
+if ($largest > $num3) {
+  echo "The largest number is: $largest";
+} else {
+  echo "The largest number is: $num3";
+}
+
+?>

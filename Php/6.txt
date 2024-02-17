@@ -1,0 +1,12 @@
+<?php
+
+$my_array = array("apple", "banana", "orange", "grape");
+$search_element = "banana";
+
+if (in_array($search_element, $my_array)) {
+  echo "$search_element found in the array!";
+} else {
+  echo "$search_element not found in the array.";
+}
+
+?>

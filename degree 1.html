@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degree</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Degree</legend>
+        <form action="/degree.php" method="post">
+            <label for="ssc">
+                <input type="checkbox" id="ssc" name="degrees[]" value="SSS"> SSS
+            </label>
+    
+            <label for="hsc">
+                <input type="checkbox" id="hsc" name="degrees[]" value="HSC"> HSC
+            </label>
+    
+            <label for="bsc">
+                <input type="checkbox" id="bsc" name="degrees[]" value="BSC"> BSC
+            </label>
+    
+            <label for="msc">
+                <input type="checkbox" id="msc" name="degrees[]" value="MSC"> MSC
+            </label><br>
+    
+            <button type="submit">Submit</button>
+            </form>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Gender</legend>
+    
+    <form action="/gender.php" method="post">  
+        <label for="male">
+            <input type="checkbox" id="male" name="gender[]" value="male"> Male
+        </label>
+
+        <label for="female">
+            <input type="checkbox" id="female" name="gender[]" value="female"> Female
+        </label>
+
+        <label for="other">
+            <input type="checkbox" id="other" name="gender[]" value="other"> Other
+        </label><br>
+
+        <button type="submit">Submit</button>
+    </fieldset>
+
+</body>
+</html>

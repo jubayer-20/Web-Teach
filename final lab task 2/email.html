@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Email</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>Email</td>
+            </tr>
+            <tr><td><input id="mail" type="text"></td>
+            <td><button title="hint: sample@example.com">i</button></td></tr>
+            <tr>
+                <td><button onclick="checkMail()" >Submit</button></td>
+            </tr>
+            <tr><td><h4 id="message"></h4></td></tr>
+        </table>
+        <script>
+            function checkMail(){
+                let mail = document.getElementById('mail').value;
+                let Pos1 = mail.indexOf('@');
+                let Pos2 = mail.lastIndexOf('.');
+    
+                if(!mail) document.getElementById('message').innerHTML = "email can not be empty";
+                else if (Pos1 === -1 || Pos1 === 0 || Pos2 === -1 || Pos2 <= Pos1 + 1 || Pos2 === mail.length - 1) {
+                    document.getElementById('message').innerHTML = "invalid email address";
+                    
+                }
+            }
+        </script>
+    </body>
+</html>

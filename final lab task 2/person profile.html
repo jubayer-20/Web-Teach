@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Profile</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Person Profile</legend>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input id="name" type="text"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input id="email" type="text"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" id="male" value="male">Male
+                    <input type="radio" name="gender" id="female" value="female">Female    
+                    <input type="radio" name="gender" id="other" value="other">Other
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td><input id="dob" type="text" placeholder="DD/MM/YYYY"></td>
+            </tr>
+            <tr>
+                <td>Blood Group</td>
+                <td>
+                    <select id="blood">
+                        <option value="select">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Degree</td>
+                <td>
+                    <input type="checkbox" id="SSC">SSC
+                    <input type="checkbox" id="HSC">HSC
+                    <input type="checkbox" id="BR">BR
+                </td>
+            </tr>
+            <tr>
+                <td>Profile Photo</td>
+                <td><input type="file" id="photo"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button onclick="submitProfile()">Submit</button></td>
+            </tr>
+        </table>
+    </fieldset>
+    <h4 id="message"></h4>
+
+    <script>
+        function submitProfile() {
+            
+            let name = document.getElementById("name").value
+            let nameLength=name.split(' ');
+            let email = document.getElementById('email').value;
+            let Pos1 = email.indexOf('@');
+            let Pos2 =email.lastIndexOf('.');
+            let isMaleChecked = document.getElementById("male").checked;
+            let isFemaleChecked = document.getElementById("female").checked;
+            let dob = document.getElementById("dob").value.trim();
+            let selectedOption = document.getElementById("Blood").value;        
+            let sscChecked = document.getElementById("SSC").checked;
+            let hscChecked = document.getElementById("HSC").checked;
+            let brChecked = document.getElementById("BR").checked;
+            let photo = document.getElementById("photo").value;
+
+            if (!name) {
+                document.getElementById('message').innerHTML = "Name should not be empty.";
+                
+            }else if(!checkFirstChar(name[0])){
+                document.getElementById('message').innerHTML = "name must start with a letter";
+               
+            }
+            else if(nameLength.length <2){
+                document.getElementById('message').innerHTML="Name should have 2 word";
+            }
+            for(let i=0; i<name.length; i++){
+                if(checkChar(name[i])){}
+                else document.getElementById('message').innerHTML = "name can only contain a-z or A-Z or dot or dash";
+            }  
+            
+                function checkChar(ch){
+                if(ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z' || ch == '.' || ch == '_' || ch == ' ') return true;
+                }
+                function checkFirstChar(ch){
+                if(ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z') return true;
+                }
+
+            if(!email) document.getElementById('message').innerHTML = "email can not be empty";
+                else if (Pos1 === -1 || Pos1 === 0 || Pos2 === -1 || Pos2 <= Pos1 + 1 || Pos2 === email.length - 1) {
+                    document.getElementById('message').innerHTML = "invalid email address";
+                    
+                }         
+             
+            if (!isMaleChecked && !isFemaleChecked && !isOtherChecked) {
+                alert("Please select a gender option.");
+            } else {
+                //alert("Form submitted successfully!");
+            }
+
+            let datePattern = /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[012])\/(19\d\d|20(0\d|1[0-6]))$/;
+            if (!dob || !datePattern.test(dob)) {
+                document.getElementById('message').innerHTML = "Invalid date of birth format.";
+                return;
+            }
+            
+            if (selectedOption === "option1") {
+                document.getElementById('message').innerHTML = "Please select a Blood Group";
+                
+            } else {
+                document.getElementById('message').innerHTML = "Form submitted successfully!";
+                
+            }
+
+            if (!sscChecked && !hscChecked && !brChecked) {
+                document.getElementById('message').innerHTML = "Please select at least one degree.";
+                return;
+            }
+
+     
+            if (!photo) {
+                document.getElementById('message').innerHTML = "Please upload a profile photo.";
+                return;
+            }
+
+            document.getElementById('message').innerHTML = "Form submitted successfully!";
+        }
+    </script>
+</body>
+</html>
